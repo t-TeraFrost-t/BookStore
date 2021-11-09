@@ -1,0 +1,67 @@
+<HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+      <script src="../scripts/basket.js"></script>     
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="../css/mediumish.css" rel="stylesheet">
+      <link rel='stylesheet' href="css/main.css"></style>         
+    </HEAD>
+    <BODY>
+        <div>
+            <%if( locals.user){%>
+                
+                <%- include('../partials/logedin_navbar',{user:user,current:curent});%>
+                
+            <%}else {%>
+                <%-include('../partials/default_navbar')%>
+                
+            <%}%>%>
+            
+        </div>
+        <p>-</p>
+       
+           <% if(books.length > 0){%>
+            <table> 
+            <% books.forEach((book)=>{%>
+                    <tr id="<%= book.id %>">
+                        <td><%= book.name %>     _ </td>
+                        <td><%= book.isbn %>     _ </td>
+                        <td><%= (book.number_of_books * book.price).toFixed(2) %>  <%=currency%> </td>
+                        <td >
+                            <button class ="subtract" >-</button>
+                            <input value="<%= book.number_of_books%>" id="number">
+                            <button class="add"  >+</button> 
+                        </td>
+                    </tr>
+                    
+                <%});%>
+                
+            </table>
+            <h3>Total: <%=total.toFixed(2)%> <%=currency%>></h3>
+                <button id='order' >Order</button>  
+            <%}else{%>
+                     <p>You have no items in basket</p>
+                <%}%>
+            
+       
+         
+            
+            
+                
+    <!--<div class="vl"></div> -->
+    
+    
+    
+    </BODY>
+    </HTML>

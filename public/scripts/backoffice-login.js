@@ -1,0 +1,13 @@
+$(document).ready(()=>{
+    console.log('li');
+    $('#log').click(()=>{
+        $.get(`backoffice-login/${$('#name').val()}/${$('#password').val()}`,(data)=>{
+            if(data=='nouser'){
+                $('#error').show();
+            }
+            if(data=='/backoffice'){
+                window.location.href=data;
+            }
+        });
+    });
+});

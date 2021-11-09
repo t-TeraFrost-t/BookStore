@@ -1,0 +1,51 @@
+ <HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+      <script src="../scripts/book.js"></script> 
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="../css/mediumish.css" rel="stylesheet">
+      <link rel='stylesheet' href="css/main.css"></style>         
+    </HEAD>
+    <BODY>
+      <div>
+        <%if( locals.user){%>
+            
+            <%- include('../partials/logedin_navbar',{user:user,current:'blu'});%>
+            
+        <%}else {%>
+            <%-include('../partials/default_navbar')%>
+            
+        <%}%>%>
+        
+    </div>
+       
+           <div class="book" id="<%=book.isbn%>">
+                <img src="<%=book.cover%>" alt="Italian Trulli" >
+                <h1> <%=book.name%> </h1>
+                <h2> <%=book.autor%> </h2>
+                <h2>Price: <%=book.price%> <%=currency%></h2>
+                <h4>Amount: <%=book.amount%> </h4>
+                <h5> <%=book.gener%></h5>
+                <p> <%=book.description%></p>
+            </div>
+            <button class="add" id="<%=book.isbn%>">Add to basket</button>
+            
+            
+                
+    <!--<div class="vl"></div> -->
+    
+    
+    
+    </BODY>
+    </HTML>

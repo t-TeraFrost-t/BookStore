@@ -1,0 +1,117 @@
+<HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+    <script src="../scripts/basket.js"></script>     
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link href="../css/mediumish.css" rel="stylesheet">
+      <script src="../scripts/backoffice-book.js"></script>    
+      <link rel='stylesheet' href="css/main.css"></style>  
+    </HEAD>
+    <BODY>
+      <%- include('../partials/backoffice-navbar',{user:user,current:curent});%>
+            <p>-</p>
+      
+       <div class = 'filter'>
+           <div>
+            <label  for='name'>Name:</label>
+            <input value='<%= value.name%>' type='text' id='name'>
+            </div>
+            <div>
+            <label for='autor'>Autor:</label>
+            <input value='<%= value.autor%>' type='text' id='autor'>
+           </div>
+
+            <div>
+              <label for='gener'>Gener:</label>
+                <select id="gener">
+                  <%if(value.gener==0 || !value.gener){%>
+                    <option selected value="0">None</option>
+                    <%}%>
+                    
+                    <% geners.forEach((gener)=>{%>
+                      <%if(value.gener==gener.id){%>
+                        <option selected value="<%=gener.id%>"><%=gener.name%></option>
+                        <%}else{%>
+                          <option  value="<%=gener.id%>"><%=gener.name%></option>
+                          <%}%>
+                               
+                                
+                    <%})%>
+                  </select>
+            </div>
+            <div>
+                <p><%= value.amountUpper%></p>
+                <label for='amount'>Les than or equal to amount:</label>
+                <input value='<%= value.amountUpper%>' type='number' id='amountUpper'>
+                <label for='amount'>More than or equal to amount:</label>
+                <input value='<%= value.amountLower%>' type='number' id='amountLower'>
+            </div>
+            
+            <button id='filter-button'>Fillter</button>
+            <button id="add">Add</button>
+       </div>
+       <div>
+        <button class="pages" value="1"><|</button>
+        <button class="pages" value="<%=parseInt(pages.current)-1%>"><</button>
+        <% for( let i = (pages.current-5<=1 ? 1 : pages.current-5) ; i<=(parseInt(pages.current)+5<=pages.maxPage ? parseInt(pages.current)+5 : pages.maxPage); i++){%>
+           <% if(i==pages.current){%>
+            <button class="pages" style="background-color: red;"  value="<%=i%>"><%=i%></button>
+            <%}else{   %>
+                <button class="pages"   value="<%=i%>"><%=i%></button>
+                <%}%>
+             
+            <%}%>
+        <button class="pages" value="<%=parseInt(pages.current)+1%>">></button>
+        <button class="pages" value="<%=pages.maxPage%>">|></button>
+    </div>
+        <table>
+            <tr>
+              <th>id</th>
+              <th>Name</th>
+              <th>Autor</th>
+              <th>Price</th>
+              <th>Amount</th>
+              <th>Gener</th>
+              <th></th>
+            </tr>
+            <%if(books.length!==0){%>
+              <% books.forEach((book)=>{%>
+                <tr>
+                    <td class="text"><%=book.isbn%></td>
+                    <td class="text"><%=book.name%></td>
+                    <td class="text"><%=book.autor%></td>
+                    <td class="number"><%=book.price%> <%=currency%></td>
+                    <td class="number"><%=book.amount%></td>
+                    <td class="text"><%=book.gener%></td>
+                    <%if(user.id_group>10){%>
+                      <td> <button class="update" id="<%=book.isbn%>">Update</button>  
+                        <button class="delete" id='<%=book.isbn%>'>Delete</button></td>
+                      <%}%>
+                    
+                </tr>
+                
+            <%});%>  
+              <%}else{%>
+                  <td>
+                    <h5>No Books</h5>
+                  </td>
+                 
+                <%}%>
+            
+          </table>
+    
+    
+    
+    </BODY>
+    </HTML>

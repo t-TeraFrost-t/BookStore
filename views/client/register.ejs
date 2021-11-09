@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Plan</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script src="scripts/register.js"></script> 
+</head>
+<style>
+.navbar {
+overflow: hidden;
+background-color: #1d59ba;
+position: fixed;
+top: 0;
+width: 100%;
+}
+form {
+  margin: 0px 50px 75px 100px;
+}
+h2 {
+margin: 120px 50px 50px 100px;
+}
+</style>
+<body>
+
+
+<div class = "container">
+<h2>Регистрация</h2>
+</div>
+<div class="container">
+  
+  
+    <div class="form-group">
+      <div>
+          
+        <label for="user" id="error-exist" style="color: red;display: none;">User already exists</label>
+        <label for="user" id="error-pas" style="color: red;display: none;">Passwords are not the same</label>
+        <label for="user" id="error-email" style="color: red;display: none;">Email has been already used</label>
+        <label for="user" id="error-incorect-input" style="color: red;display: none;">Incorect input</label>
+        <label for="user" id="error-captcha" style="color: red;display: none;">Please use captcha</label>
+      </div>
+      
+      <label for="user">User Name</label>
+      <input type="text" class="form-control" id="user" placeholder="Enter User Name" >
+    </div>
+    <div>
+        <label for="email">Email addres</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd1">Password</label>
+      <input type="password" class="form-control" id="pwd1" placeholder="Enter password" name="pwd1">
+    </div>
+	<div class="form-group">
+      <label for="pwd2">Repeat password</label>
+      <input type="password" class="form-control" id="pwd2" placeholder="Enter password" name="pwd2">
+    </div>
+    <div>
+        <div class="g-recaptcha" data-sitekey="6LfxfGMcAAAAALIN4HtHNbG-EXUwLousxgc1MsPD"></div>
+        <br/>
+    </div>
+  
+    <button type="submit" class="btn btn-default" id="register">Continue</button>
+  
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Smart Plan</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+    <script src="../scripts/basket.js"></script>     
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link href="../css/mediumish.css" rel="stylesheet">
+    <script src="scripts/backoffice.js"></script>      
+
+
+    
+    
+  </head>
+
+<body>
+  
+
+    <div>
+      <%- include('../partials/backoffice-navbar',{user:user,current:'curent'});%>
+      <p>-</p>
+       <button id='orders'>Orders</button>
+       <button id='books'> Books</button>
+       <%if(user.id_group>10){%>
+          
+          <button id='staff'> Staff</button>
+          <button id='geners'> Geners</button>
+          <button id='users'> Users</button>
+          <%if(user.id_group>50){%>
+         
+          <%}%>
+        <%}%>
+       
+    </div>
+
+
+</body>
+</html>

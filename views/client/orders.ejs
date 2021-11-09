@@ -1,0 +1,61 @@
+<HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+      <script src="../scripts/order.js"></script>   
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="../css/mediumish.css" rel="stylesheet">
+      <link rel='stylesheet' href="css/main.css"></style>     
+    </HEAD>
+    <BODY>
+      <div>
+        <%if( locals.user){%>
+            
+            <%- include('../partials/logedin_navbar',{user:user,current:curent});%>
+            
+        <%}else {%>
+            <%-include('../partials/default_navbar')%>
+            
+        <%}%>%>
+        
+    </div>
+    <p>-</p>
+       <table>
+           <% if(orders.length > 0){%>
+                <% orders.forEach((order)=>{%>
+                    <tr class='order' id="<%= order.id %>">
+                      <td class="text"><%=order.creation_date.getFullYear()%>-<%=order.creation_date.getMonth()<8?'0'+(order.creation_date.getMonth()+1):(order.creation_date.getMonth()+1)%>-<%=order.creation_date.getDay()%> <%=order.creation_date.getHours()<9?'0'+order.creation_date.getHours():order.creation_date.getHours()%>:<%=order.creation_date.getMinutes()<9?'0'+order.creation_date.getMinutes():order.creation_date.getMinutes()%>  </td>
+                        <td class="text"><%= order.name %>  </td>
+                        <td class="number"><%= order.price %> <%=currency%> </td>
+                        <td>
+                            <button class="books"> View Order</button>
+                            <button class ="cancel" >Cancel</button>
+                        </td>
+                    </tr>
+                <%});%>
+            
+            <%}else{%>
+                     <p>You have no orders</p>
+                <%}%>
+            
+       </table>
+           
+            
+            
+                
+    <!--<div class="vl"></div> -->
+    
+    
+    
+    </BODY>
+    </HTML>

@@ -1,0 +1,127 @@
+<HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+      <script src="../scripts/main.js"></script>    
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="../css/mediumish.css" rel="stylesheet">
+      <link rel='stylesheet' href="css/main.css"></style>  
+    </HEAD>
+    <BODY>
+        <div>
+            <%if( locals.user){%>
+                
+                <%- include('../partials/logedin_navbar',{user:user,current:curent});%>
+                
+            <%}else {%>
+                <%-include('../partials/default_navbar')%>
+                
+            <%}%>%>
+            
+        </div>
+        <p>-</p>
+       
+        <div>
+            <div id="serch-div">
+                <label  for="search-name">Name:</label> 
+                <input type="text" value='<%=value.name%>'  id="search-name" placeholder="Enter a name">
+                <label for="search-autor">Autor:</label>
+                <input type="text" id="search-autor" value='<%=value.autor%>' placeholder="Enter a autor">
+                <div>
+                    <label for="fillter-isbn">ISBN:</label>
+                    <input type="text" value='<%=value.isbn%>' id="fillter-isbn" placeholder="Enter a isbn">
+                </div>  
+                <button id="search">Search</button>
+            </div>
+            
+            <div id="fillter-div">
+                  
+                <label for="p">Price:</label>
+                <div id="p">
+                    <label  for="fillter-lower-price">More than:</label>
+                    <input value='<%=value.lower%>' type="number" step=0.01 id="fillter-lower-price">
+                    <label for="fillter-upper-price">Less than:</label>
+                    <input value='<%=value.upper%>' type="number" step=0.01 id="fillter-upper-price">
+                    <select id="order">
+                        <option selected value='0'> Descending</option>
+                        <option value='1'> Ascending</option>
+                    </select>
+                </div>
+                
+                
+                <div>
+                    <%=value.genere%>
+                    <select id="fillter-gener">
+                        <%if(value.gener==0 || !value.gener){%>
+                            <option selected value='0'> None</option>
+                            <%}%>
+                        
+                        <% geners.forEach((genere)=>{%>
+                            <%if(genere.id==value.genere){%>
+                                <option selected value='<%=genere.id%>'><%= genere.name%></option>
+                                <%}else{%>
+                                    <option value='<%=genere.id%>'><%= genere.name%></option>
+                                    <%}%>
+                            
+                        <%});%>
+                    </select>
+                </div>
+                <button id="fillter">Fillter</button>
+            </div>
+            
+            <div>
+                <button class="pages" value="1"><|</button>
+                <button class="pages" value="<%=parseInt(pages.current)-1%>"><</button>
+                <% for( let i = (pages.current-5<=1 ? 1 : pages.current-5) ; i<=(parseInt(pages.current)+5<=pages.maxPage ? parseInt(pages.current)+5 : pages.maxPage); i++){%>
+                   <% if(i==pages.current){%>
+                    <button class="pages" style="background-color: red;"  value="<%=i%>"><%=i%></button>
+                    <%}else{   %>
+                        <button class="pages"   value="<%=i%>"><%=i%></button>
+                        <%}%>
+                     
+                    <%}%>
+                <button class="pages" value="<%=parseInt(pages.current)+1%>">></button>
+                <button class="pages" value="<%=pages.maxPage%>">|></button>
+            </div>
+            
+        </div>
+        <div class="card-columns listfeaturedtag">
+            <% books.forEach((book)=>{%>
+                <div class="card" >
+                    <div class="row">
+                        <div class="col-md-5 wrapthumbnail">
+                            <a >
+                                <div class="thumbnail" style="background-image:url(<%=book.cover%>);">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-block">
+                                <h2 class="card-title"><a href="/book/<%=book.isbn%>"> <%=book.name%> </a></h2>
+                                <h4 class="card-text"><%=book.autor%> </h4>
+                                    <h4> <%=book.price%> <%=currency%> </h4>
+                                    <h5> <%=book.description%> </h5>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% });%>
+        </div>
+        
+      
+    <!--<div class="vl"></div> -->
+    
+    
+    
+    </BODY>
+    </HTML>

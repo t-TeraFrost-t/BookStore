@@ -1,0 +1,37 @@
+<HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+      <script src="../scripts/backoffice-staff.js"></script>    
+      <link rel='stylesheet' href="css/main.css"></style>  
+    </HEAD>
+    <BODY>
+      <%- include('../partials/backoffice_navbar',{user:user,current:curent});%>
+            <p>-</p>
+            <div>
+                <label for='name'>Name:</label>
+                <input id='name'>
+                <label for='email'>Email:</label>
+                <input id='email'>
+                
+            </div>
+            <label id='error' for='password'>PLease Enter in both fields the same password</label>
+            <div id='password'>
+                <label for='pas1'>Password:</label>
+                <input  id='pas1'>
+                <label for='pas2'>Repeet Pasword:</label>
+                <input  id='pas2'>
+            </div>
+            <button id="submit" > Submit</button>
+    
+    
+    </BODY>
+    </HTML>

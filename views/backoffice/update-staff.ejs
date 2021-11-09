@@ -1,0 +1,42 @@
+<HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>       
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <script src="../scripts/backoffice-staff.js"></script>    
+      <link rel='stylesheet' href="css/main.css"></style>  
+    </HEAD>
+    <BODY>
+       
+      <%- include('../partials/backoffice-navbar',{user:user,current:'curent'});%>
+      <p>-</p>
+        <label> ID <%=staff.id%></label>
+            <div>
+                <label for='name'>Name:</label>
+                <input value='<%=staff.username%>' id='name'>
+                <label for='email'>Email:</label>
+                <input value='<%=staff.email%>' id='email'>
+                
+            </div>
+            <label id='error' for='password'>PLease Enter in both fields the same password</label>
+            <label for='password'>Update password</label>
+            <div id='password'>
+                <label for='pas1'>Password:</label>
+                <input  id='pas1'>
+                <label for='pas2'>Repeet Pasword:</label>
+                <input  id='pas2'>
+            </div>
+            <button class="submit" id='<%=staff.id%>'> Submit</button>
+    
+    
+    </BODY>
+    </HTML>
