@@ -11,10 +11,10 @@ const path = require('path');
 var fs = require('fs');
 
 const client = new Client({
-    user: 'mincho',
-    host: 'localhost',
-    database: 'testbookstore',
-    password: 'PALEsedem1@'
+    user: 'rjiwxzgjsheqne',
+    host: 'ec2-52-208-229-228.eu-west-1.compute.amazonaws.com',
+    database: 'ddn7d5uqe8qvkm',
+    password: 'b28c3931eaf69bb9a5746c364d1833e585887e44a3e05e3a092e24d56cb5f9e8'
   });
 const storage = multer.diskStorage({
     destination : function(req, file, callback){
