@@ -10,11 +10,12 @@ const multer = require('multer');
 const path = require('path');
 var fs = require('fs');
 
-const client = new Client(
+const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
-  });
+  }
+});
 const storage = multer.diskStorage({
     destination : function(req, file, callback){
         callback(null, './public/images-books'); // set the destination
