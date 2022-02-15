@@ -10,11 +10,10 @@ const multer = require('multer');
 const path = require('path');
 var fs = require('fs');
 
-const client = new Client({
-    user: 'rjiwxzgjsheqne',
-    host: 'ec2-52-208-229-228.eu-west-1.compute.amazonaws.com',
-    database: 'ddn7d5uqe8qvkm',
-    password: 'b28c3931eaf69bb9a5746c364d1833e585887e44a3e05e3a092e24d56cb5f9e8'
+const client = new Client(
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
   });
 const storage = multer.diskStorage({
     destination : function(req, file, callback){
