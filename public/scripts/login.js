@@ -1,10 +1,22 @@
 $(document).ready(()=>{
     $("#loggin").click(()=>{
-        $.get(`/login/${$("#name").val()}/${$("#password").val()}`,(data)=>{
-            if(data==='error'){
-                $("#error").show();
-            }else{
-                window.location.href = data;
+        console.log($('#name').val());
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: { 
+                name: $('#name').val(),
+                password: $('#password').val()
+            },
+            success: (data)=>{
+                console.log(data);
+                if(data==='/books'){
+                    window.location.href = data;
+                }else if(data==='/nouser'){
+                    $("#error").show();
+                }else{
+                    alert(data);
+                }
             }
         });
     });

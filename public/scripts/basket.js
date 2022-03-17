@@ -1,24 +1,46 @@
 $(document).ready(()=>{
     $(".subtract").click(()=>{
         if(parseInt($(event.currentTarget).parent().children("#number").val())!=1){
-            $.post(`/basket/${$(event.currentTarget).parent().parent().attr("id")}/${parseInt($(event.currentTarget).parent().children("#number").val())-1}`,(data)=>{
-                window.location.reload();
+            $.ajax({
+                url: '/update-basket',
+                type: 'POST',
+                data: { 
+                    id: $(event.currentTarget).parent().parent().attr("id"),
+                    count: parseInt($(event.currentTarget).parent().children("#number").val())-1
+                },
+                success: (data)=>{
+                    window.location.reload();
+                }
             });
         }else{
-            $.post(`/basket-delete/${$(event.currentTarget).parent().parent().attr("id")}`,(data)=>{
-                if(data==='deleted'){
+            $.ajax({
+                url: '/basket-delete',
+                type: 'POST',
+                data: { 
+                    id: $(event.currentTarget).parent().parent().attr("id"),
+                },
+                success: (data)=>{
+                    if(data==='deleted'){
                     
-                    if(!alert('removed from basket')){window.location.reload();}
+                        if(!alert('removed from basket')){window.location.reload();}
+                    }
+                    window.location.reload();
                 }
-                window.location.reload();
             });
         }
         
     })
     $(".add").click(()=>{
-        console.log($(event.currentTarget).parent().parent().attr("id"));
-        $.post(`/basket/${$(event.currentTarget).parent().parent().attr("id")}/${parseInt($(event.currentTarget).parent().children("#number").val())+1}`,(data)=>{
-            window.location.reload();
+        $.ajax({
+            url: '/update-basket',
+            type: 'POST',
+            data: { 
+                id: $(event.currentTarget).parent().parent().attr("id"),
+                count: parseInt($(event.currentTarget).parent().children("#number").val())+1
+            },
+            success: (data)=>{
+                window.location.reload();
+            }
         });
     });
     $("#order").click(()=>{

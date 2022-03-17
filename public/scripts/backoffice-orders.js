@@ -2,8 +2,9 @@ $(document).ready(()=>{
     $('#status-modal').hide(); 
     $('#status-modal').draggable();
     console.log("hrip");
+    
     $(".view").click(()=>{
-        window.location.href = `/view-order/${$(event.currentTarget).attr("id")}`; 
+        window.location.href = `/backoffice-view-order/${$(event.currentTarget).attr("id")}`; 
     });
     $(".update").click(()=>{
         $('#qwer').empty().append(`Update status on order ${$(event.currentTarget).attr("id")}`);
@@ -12,7 +13,7 @@ $(document).ready(()=>{
     })
     $("#button-update-status").click(()=>{
         $.post(`/update-oder/${$(event.currentTarget).val()}/${$('#status-update').val()}`,(data)=>{
-            if(!alert('data')){window.location.href='/backoffice-orders';}
+            if(!alert(data)){window.location.href='/backoffice-orders';}
         });
     });
     $(".delete").click(()=>{
@@ -23,7 +24,7 @@ $(document).ready(()=>{
         });
     })
     $("#add").click(()=>{
-        window.location.href = `/add-order`;
+        window.location.href = '/add-order';
     });
     $(".submit").click(()=>{
         console.log($('#gener').val());
@@ -53,6 +54,7 @@ $(document).ready(()=>{
             data: {
                 dateFrom: $('#dateFrom').val(),
                 dateTo: $('#dateTo').val(),
+                dateTo: $('#dateTo').val(),
                 name: $('#user').val(),
                 priceUpper: $('#priceUpper').val(),
                 priceLower: $('#priceLower').val(),
@@ -65,5 +67,27 @@ $(document).ready(()=>{
             }
         });
     });
-    $("")
+    $(".pages").click(()=>{
+
+        console.log($('#fillter-gener').val());
+        $.ajax({
+            url: '/backoffice-orders',
+            method: 'GET',
+            data: {
+                dateFrom: $('#dateFrom').val(),
+                dateTo: $('#dateTo').val(),
+                dateTo: $('#dateTo').val(),
+                name: $('#user').val(),
+                priceUpper: $('#priceUpper').val(),
+                priceLower: $('#priceLower').val(),
+                status: $('#status').val(),
+                page: $(event.currentTarget).attr("value")
+            },
+            success : (data)=>{
+                let newDoc = document.open("text/html", "replace");
+                newDoc.write(data);
+                newDoc.close();
+            }
+        }); 
+    }); 
 });

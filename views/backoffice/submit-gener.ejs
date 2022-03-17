@@ -19,8 +19,9 @@
       <link rel='stylesheet' href="css/main.css"></style>  
     </HEAD>
     <BODY>
-      <%- include('../partials/backoffice-navbar',{user:user,current:'curent'});%>
-      <p>-</p>       
+      <%- include('../partials/backoffice-navbar',{user:user,current:'curent',permitions:permitions});%>
+      <p>-</p>
+      <label>Update gener</label>       
             <label> ID <%=gener.id%></label>
             <div>
                 <label for='name'>Name:</label>

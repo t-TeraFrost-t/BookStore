@@ -25,7 +25,7 @@ img{
 
 button {
   font-family: "Times New Roman", Times, serif;
-  width: 70px;
+  width: fit-content;
   height: 30px;
   background-color: #4CAF50; /* Green */
   border: 2px solid #FFFFFF;
@@ -54,7 +54,7 @@ button:hover {
 input{
   font-family: "Lucida Console", "Courier New", monospace;
   font-size: 12px;
-  width: 300px;
+  width: fit-content;
   padding: 4px 6px;
   margin: 6px 0;
   box-sizing: border-box;
@@ -62,7 +62,7 @@ input{
 select {
   font-family: "Lucida Console", "Courier New", monospace;
   font-size: 12px;
-  width: 300px;
+  width: fit-content;
   padding: 4px 6px;
   margin: 3px 0;
   box-sizing: border-box;

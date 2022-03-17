@@ -20,6 +20,7 @@
       <link rel='stylesheet' href="css/main.css"></style>  
     </HEAD>
     <BODY>
+      <label>CRUD users</label>
         <table>
             <tr>
               <th>id</th>
@@ -28,12 +29,21 @@
               <th>Valid</th>
               <th></th>
             </tr>
+            <% locals.update = (permitions.findIndex(element => element.id == 15)!= -1) ? 1 : 0;%>
+            <% locals.delete = (permitions.findIndex(element => element.id == 16)!= -1) ? 1 : 0;%> 
             <% users.forEach((user)=>{%>
                 <tr>
                     <td><%=user.id%></td>
                     <td><%=user.username%></td>
                     <td><%=user.email%></td>
-                    <td> <button class="update" id="<%=user.id%>">Update</button>  <button class="delete" id='<%=user.id%>'>Delete</button></td>
+                    <td> 
+                      <% if( locals.update == 1){%>
+                        <button class="update" id="<%=user.id%>">Update</button>  
+                      <%}%>
+                      <% if( locals.delete == 1){%>
+                        <button class="delete" id='<%=user.id%>'>Delete</button>
+                      <%}%>
+                    </td>
                 </tr>
                 
             <%});%>

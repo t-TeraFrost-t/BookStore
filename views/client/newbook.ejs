@@ -21,6 +21,7 @@
     <BODY>
       <%- include('../partials/backoffice-navbar',{user:user,current:'curent'});%>
             <p>-</p>
+        <label>Add Book</label>
         <form action="/add-book1" method="POST" enctype="multipart/form-data">
           <div>
             
@@ -43,6 +44,10 @@
           <div>
             <label for="price">Enter price:</label>
             <input type="number" step=0.01  id="price" name="price">
+            <label for="discount">Enter discount:</label>
+            <input type="number" step=0.01  id="discount" name="discount">
+          </div>
+          <div>  
             <label for="amount">Enter number of books:</label>
             <input type="number"  id="amount" name="amount">
           </div>  

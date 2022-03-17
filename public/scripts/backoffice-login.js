@@ -1,12 +1,19 @@
 $(document).ready(()=>{
     console.log('li');
     $('#log').click(()=>{
-        $.get(`backoffice-login/${$('#name').val()}/${$('#password').val()}`,(data)=>{
-            if(data=='nouser'){
-                $('#error').show();
-            }
-            if(data=='/backoffice'){
-                window.location.href=data;
+        $.ajax({
+            url: '/backoffice-login/',
+            type: 'POST',
+            data: { 
+                name: $('#name').val(),
+                password: $('#password').val()
+            },
+            success: (data)=>{
+                if(data==='error'){
+                    $("#error").show();
+                }else{
+                    window.location.href = data;
+                }
             }
         });
     });

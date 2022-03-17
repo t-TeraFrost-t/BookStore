@@ -10,16 +10,21 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
-    <script src="../scripts/basket.js"></script>     
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="/scripts/basket.js"></script>     
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-      <script src="../scripts/backoffice-staff.js"></script>    
-      <link rel='stylesheet' href="css/main.css"></style>  
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link href="/css/mediumish.css" rel="stylesheet">
+      <script src="/scripts/backoffice-staff.js"></script>    
+      <link rel='stylesheet' href="/css/main.css"></style>  
     </HEAD>
     <BODY>
-      <%- include('../partials/backoffice-navbar',{user:user,current:curent});%>
+      <%- include('../partials/backoffice-navbar',{user:user,current:curent,permitions:permitions});%>
       <p>-</p>
+      <label>CRUD staff</label>
+      <% if( permitions.findIndex(element => element.id == 17)!= -1){%>
        <button id="add">Add</button>
+       <%}%> 
         <table>
             <tr>
               <th>id</th>
@@ -27,12 +32,21 @@
               <th>Email</th>
               <th></th>
             </tr>
+            <% locals.update = (permitions.findIndex(element => element.id == 19)!= -1) ? 1 : 0;%>
+            <% locals.delete = (permitions.findIndex(element => element.id == 20)!= -1) ? 1 : 0;%>  
             <% staff.forEach((item)=>{%>
                 <tr>
                     <td><%=item.id%></td>
                     <td><%=item.username%></td>
                     <td><%=item.email%></td>
-                    <td> <button class="update" id="<%=item.id%>">Update</button>  <button class="delete" id='<%=item.id%>'>Delete</button></td>
+                    <td> 
+                      <% if( locals.update == 1){%>
+                        <button class="update" id="<%=item.id%>">Update</button>  
+                      <%}%>
+                      <% if( locals.delete == 1){%>
+                        <button class="delete" id='<%=item.id%>'>Delete</button>
+                      <%}%>
+                    </td>
                 </tr>
                 
             <%});%>

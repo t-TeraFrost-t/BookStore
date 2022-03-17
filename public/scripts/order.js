@@ -12,4 +12,20 @@ $(document).ready(()=>{
             }
         });
      });
+     $(".pages").click(()=>{
+
+        console.log($('#fillter-gener').val());
+        $.ajax({
+            url: '/orders',
+            method: 'GET',
+            data: {
+                page: $(event.currentTarget).attr("value")
+            },
+            success : (data)=>{
+                let newDoc = document.open("text/html", "replace");
+                newDoc.write(data);
+                newDoc.close();
+            }
+        }); 
+    }); 
 });

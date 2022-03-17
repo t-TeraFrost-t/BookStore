@@ -14,4 +14,7 @@ $(document).ready(()=>{
     $('#orders').click(()=>{
         window.location.href='/backoffice-orders'
     });
+    $('#reports').click(()=>{
+        window.location.href='/backoffice/reports'
+    });
 });

@@ -30,15 +30,30 @@
         
     </div>
     <p>-</p>
+      <label>Orders</label>
        <table>
            <% if(orders.length > 0){%>
+            <div>
+              <button class="pages" value="1"><|</button>
+              <button class="pages" value="<%=parseInt(pages.current)-1%>"><</button>
+              <% for( let i = (pages.current-5<=1 ? 1 : pages.current-5) ; i<=(parseInt(pages.current)+5<=pages.maxPage ? parseInt(pages.current)+5 : pages.maxPage); i++){%>
+                 <% if(i==pages.current){%>
+                  <button class="pages" style="background-color: red;"  value="<%=i%>"><%=i%></button>
+                  <%}else{   %>
+                      <button class="pages"   value="<%=i%>"><%=i%></button>
+                      <%}%>
+                   
+                  <%}%>
+              <button class="pages" value="<%=parseInt(pages.current)+1%>">></button>
+              <button class="pages" value="<%=pages.maxPage%>">|></button>
+          </div>
                 <% orders.forEach((order)=>{%>
                     <tr class='order' id="<%= order.id %>">
-                      <td class="text"><%=order.creation_date.getFullYear()%>-<%=order.creation_date.getMonth()<8?'0'+(order.creation_date.getMonth()+1):(order.creation_date.getMonth()+1)%>-<%=order.creation_date.getDay()%> <%=order.creation_date.getHours()<9?'0'+order.creation_date.getHours():order.creation_date.getHours()%>:<%=order.creation_date.getMinutes()<9?'0'+order.creation_date.getMinutes():order.creation_date.getMinutes()%>  </td>
+                      <td class="text"><%=order.creation_date.getFullYear()%>-<%=order.creation_date.getMonth()<8?'0'+(order.creation_date.getMonth()+1):(order.creation_date.getMonth()+1)%>-<%=order.creation_date.getDate()%> <%=order.creation_date.getHours()<9?'0'+order.creation_date.getHours():order.creation_date.getHours()%>:<%=order.creation_date.getMinutes()<9?'0'+order.creation_date.getMinutes():order.creation_date.getMinutes()%>  </td>
                         <td class="text"><%= order.name %>  </td>
-                        <td class="number"><%= order.price %> <%=currency%> </td>
+                        <td class="number"><%= order.price %> </td>
                         <td>
-                            <button class="books"> View Order</button>
+                            <button class="books"> View</button>
                             <button class ="cancel" >Cancel</button>
                         </td>
                     </tr>

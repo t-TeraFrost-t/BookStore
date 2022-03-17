@@ -107,9 +107,14 @@
                         </div>
                         <div class="col-md-7">
                             <div class="card-block">
-                                <h2 class="card-title"><a href="/book/<%=book.isbn%>"> <%=book.name%> </a></h2>
+                                <h2 class="card-title"><a href="/book/<%=book.id%>"> <%=book.name%> </a></h2>
                                 <h4 class="card-text"><%=book.autor%> </h4>
-                                    <h4> <%=book.price%> <%=currency%> </h4>
+                                <%if(book.price_usual===book.price){%>
+                                    <h4><%=book.price%> <%=book.currency%></h4>
+                                    <%}else{%>
+                                      <h4><%=book.price%> <%=book.currency%></h4>
+                                      <h5><s> <%=book.price_usual%> <%=book.currency%> </s> </h5>
+                                      <%}%>
                                     <h5> <%=book.description%> </h5>    
                             </div>
                         </div>

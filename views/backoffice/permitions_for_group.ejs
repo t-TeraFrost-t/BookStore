@@ -1,0 +1,58 @@
+<HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+    <script src="/scripts/basket.js"></script>     
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link href="/css/mediumish.css" rel="stylesheet">
+      <script src="/scripts/permitions_for_group.js"></script>    
+      <link rel='stylesheet' href="/css/main.css"></style>  
+    </HEAD>
+    <BODY>
+      <%- include('../partials/backoffice-navbar',{user:user,current:'cr',permitions:permitions_for_user});%>
+      <p>-</p>
+       
+            
+            <div>
+              <input type='hidden' id="add" value='<%=group.id%>' >
+            </div>
+            
+       </div>
+       <h3>Permitions for <%=group.name%></h3>
+        <table>
+            <tr>
+              <th class='number'>Type</th>
+              <th  style ='text-align: center;vertical-align: middle;'>Create</th>
+              <th style ='text-align: center;vertical-align: middle;'>Read</th>
+              <th style ='text-align: center;vertical-align: middle;'>Update</th>
+              <th style ='text-align: center;vertical-align: middle;'>Delete</th>
+            <th></th>
+            </tr>
+            <%for(let i =0;i<all_permitions.length;){%>
+              <tr>
+                <td ><%=types[i/4].s%></td>
+                <%for(let j=0;j<4;j++){%>
+                  <td >
+                    <input type="checkbox" id="scales" value='<%=all_permitions[i].id%>' <% if(permitions.findIndex(el=> el.id === all_permitions[i].id)!=-1){%>checked<%}%>>
+                  </td>
+                  
+                  <%i++%>
+                <%}%>
+              </tr>
+            <%}%>
+          </table>
+    
+          
+    
+    </BODY>
+    </HTML>

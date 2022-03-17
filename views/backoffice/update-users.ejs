@@ -4,15 +4,17 @@
     
     
     <title>Store</title>
-    <meta charset="utf-8">
+    <meta<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
-    <script src="../scripts/basket.js"></script>     
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
+    <script src="/scripts/basket.js"></script>     
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link href="/css/mediumish.css" rel="stylesheet">
       <script src="../scripts/backoffice-users.js"></script>    
       <link rel='stylesheet' href="css/main.css"></style>  
     </HEAD>
@@ -20,6 +22,7 @@
        
       <%- include('../partials/backoffice-navbar',{user:staff,current:"curent"});%>
       <p>-</p>
+      <label>Update user:</label>
         <label> ID <%=user.id%> Valid: <%=user.valid%></label>
             <div>
                 <label for='name'>Name:</label>

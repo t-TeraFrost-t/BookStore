@@ -18,6 +18,7 @@
       <link rel='stylesheet' href="css/main.css"></style>         
     </HEAD>
     <BODY>
+      <label>Book</label>
       <div>
         <%if( locals.user){%>
             
@@ -34,12 +35,16 @@
                 <img src="<%=book.cover%>" alt="Italian Trulli" >
                 <h1> <%=book.name%> </h1>
                 <h2> <%=book.autor%> </h2>
-                <h2>Price: <%=book.price%> <%=currency%></h2>
-                <h4>Amount: <%=book.amount%> </h4>
+                <%if(book.price_usual===book.price){%>
+                  <h2>Price: <%=book.price%> <%=book.currency%></h2>
+                  <%}else{%>
+                    <h2>Price: <%=book.price%> <%=book.currency%></h2>
+                    <h3><s> <%=book.price_usual%> <%=book.currency%> </s> </h3>
+                    <%}%>
                 <h5> <%=book.gener%></h5>
                 <p> <%=book.description%></p>
             </div>
-            <button class="add" id="<%=book.isbn%>">Add to basket</button>
+            <button class="add" id="<%=book.id%>">Add to basket</button>
             
             
                 

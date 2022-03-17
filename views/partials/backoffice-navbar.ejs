@@ -1,4 +1,4 @@
-
+<style  ref='/css/main.css'></style>
 <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,26 +10,46 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <!-- Begin Menu -->
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item <%if(current=='books'){%>active<%}%>">
-          <a class="nav-link actice" href="../backoffice-books">Books</a>
-          </li>
-          <li class="nav-item <%if(current=='gener'){%>active<%}%>">
-          <a class="nav-link" href="../backoffice-genere">Gener</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link <%if(current=='orders'){%>active<%}%>" href="../backoffice-orders">Orders</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <%if(current=='users'){%>active<%}%>" href="../backoffice-users">Users</a>
+          <li class="nav-item <%if(current=='reports'){%>active<%}%>">
+            <a class="nav-link actice" href="/backoffice/reports">Reports</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link <%if(current=='staff'){%>active<%}%>" href="../backoffice-staff">Staff</a>
+            <% if( permitions.findIndex(element => element.id == 2)!= -1){%>
+              <li class="nav-item <%if(current=='books'){%>active<%}%>">
+                <a class="nav-link actice" href="/backoffice-books">Books</a>
+              </li>    
+            <%}%>
+            <% if( permitions.findIndex(element => element.id == 6)!= -1){%>
+              <li class="nav-item <%if(current=='gener'){%>active<%}%>">
+                <a class="nav-link" href="/backoffice-genere">Gener</a>
               </li>
+          <%}%>
+          <% if( permitions.findIndex(element => element.id == 10)!= -1){%>
           <li class="nav-item">
-            <a class="nav-link" href="../logout">Exit</a>
+          <a class="nav-link <%if(current=='orders'){%>active<%}%>" href="/backoffice-orders">Orders</a>
+          </li>
+          <%}%>
+          <% if( permitions.findIndex(element => element.id == 14)!= -1){%>
+          <li class="nav-item">
+            <a class="nav-link <%if(current=='users'){%>active<%}%>" href="/backoffice-users">Users</a>
+            </li>
+            <%}%> 
+            <% if( permitions.findIndex(element => element.id == 18)!= -1){%>
+            <li class="nav-item">
+              <a class="nav-link <%if(current=='staff'){%>active<%}%>" href="/backoffice-staff">Staff</a>
+              </li>
+              <%}%>
+              
+              <% if( permitions.findIndex(element => element.id == 22) !== -1){%>
+                <li class="nav-item">
+                  <a class="nav-link <%if(current=='groups'){%>active<%}%>" href="/backoffice-roles">Roles</a>
+                  </li>
+                  <%}%>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Exit</a>
             </li>
         </ul>
         
       </div>
     </div>
     </nav>
+    

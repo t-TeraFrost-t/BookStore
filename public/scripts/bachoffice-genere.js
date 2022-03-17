@@ -14,7 +14,8 @@ $(document).ready(()=>{
         window.location.href = `/backoffice-gener`;
     });
     $("#submit").click(()=>{
-        $.post(`/add-gener/${$('#name').val()}`,(data)=>{
+       // console.log(encodeURI($('#name').val()));
+        $.post(`/add-gener/${ encodeURIComponent($('#name').val())}`,(data)=>{
             if(data==='added'){
                 if(!alert('added')){window.location.href='/backoffice-genere';}
 
@@ -23,7 +24,7 @@ $(document).ready(()=>{
     });
     $(".submit").click(()=>{
         console.log("neshto");
-        $.post(`/update-gener/${$(event.currentTarget).attr("id")}/${$("#name").val()}`,(data)=>{
+        $.post(`/update-gener/${$(event.currentTarget).attr("id")}/${encodeURIComponent($("#name").val())}`,(data)=>{
             if(data==='updated'){
                 if(!alert('updated')){window.location.href='/backoffice-genere';}
             }else{

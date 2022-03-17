@@ -1,0 +1,55 @@
+<HTML>
+
+    <HEAD>
+    
+    
+    <title>Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+    <script src="/scripts/basket.js"></script>     
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link href="/css/mediumish.css" rel="stylesheet">
+      <script src="/scripts/roles_of_staff.js"></script>    
+      <link rel='stylesheet' href="/css/main.css"></style>  
+    </HEAD>
+    <BODY>
+      <%- include('../partials/backoffice-navbar',{user:user,permitions:permitions,current:'orders'});%>
+      <p>-</p>
+       
+            
+            <div>
+              <input type='hidden' id="add" value='<%=role.id%>' >
+            </div>
+            
+       </div>
+       <h3>Staff that has role <%=role.name%></h3>
+       
+       <table>
+            <tr>
+              <th class='number'>Staff</th>
+              <th  style ='text-align: center;vertical-align: middle;'>Create</th>
+            <th></th>
+            </tr>
+            
+            <% all_staff.forEach((st)=>{%>
+              <tr>
+                  <td class='number'>
+                      <%=st.username%>
+                  </td>
+                  <td>
+                    <input  type="checkbox" id="scales" value='<%=st.id%>' <% if(staff.findIndex(el=> el.id === st.id)!=-1){%>checked<%}%>>  
+                  </td>
+              </tr>  
+            <%})%>
+          </table>
+    
+          
+    
+    </BODY>
+    </HTML>

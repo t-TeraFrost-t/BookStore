@@ -27,7 +27,8 @@ $(document).ready(()=>{
                 price: $('#price').val(),
                 amount: $('#amount').val(),
                 gener: $('#gener').val(),
-                isbn: $(event.currentTarget).attr("id")
+                discount: $('#discount').val(),
+                id: $(event.currentTarget).attr("id")
             },
             success: (data)=>{
                 if(!alert(data)){window.location.href='/backoffice-books';}

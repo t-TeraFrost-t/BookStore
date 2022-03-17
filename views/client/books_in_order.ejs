@@ -10,18 +10,18 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
-    <script src="../scripts/main.js"></script>    
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="/scripts/main.js"></script>    
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-  <link href="../css/mediumish.css" rel="stylesheet">
-    <link rel='stylesheet' href="../css/main.css"></style>    
+  <link href="/css/mediumish.css" rel="stylesheet">
+    <link rel='stylesheet' href="/css/main.css"></style>    
     </HEAD>
     <BODY>
       <div>
         <%if( locals.user){%>
             
-            <%- include('../partials/logedin_navbar',{user:user});%>
+            <%- include('../partials/logedin_navbar',{user:user,current:'cur'});%>
             
         <%}else {%>
             <%-include('../partials/default_navbar')%>
@@ -30,6 +30,7 @@
         
     </div>
     <p>-</p>
+    <label>Books in order</label>
         <table>
             <tr>
               <th>ISBN</th>
@@ -45,9 +46,9 @@
                     <td class="text"><%=book.isbn%></td>
                     <td class="text"><%=book.name%></td>
                     <td class="text"><%=book.autor%></td>
-                    <td class="number"><%=book.price%> <%=currency%></td>
+                    <td class="number"><%=book.price%> <%=book.currency%></td>
                     <td class="number"><%=book.amount%></td>
-                    <td class="number"><%=(book.price*book.amount).toFixed(2)%> <%=currency%></td>
+                    <td class="number"><%=(book.price*book.amount).toFixed(2)%> <%=book.currency%></td>
                 </tr>
                 
             <%});%>
@@ -57,7 +58,7 @@
               <td></td>
               <td></td>
               <td class="number">Total:</td>
-              <td><%=sum%> <%=currency%></td>
+              <td><%=sum.sum%> <%=sum.currency%></td>
             </tr>
           </table>
     
